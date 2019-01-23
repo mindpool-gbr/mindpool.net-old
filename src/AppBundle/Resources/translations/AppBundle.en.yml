@@ -1,0 +1,19 @@
+header:
+  1und1: '1und1 Hosting'
+  dashboard: 'Dashboard'
+  hetzner: 'Hetzner Hosting'
+  homepage: 'Welcome to mindpool!'
+  imprint: 'About / Imprint'
+  menu: 'Hotlinks'
+  phpmyadmin: 'MySQL Admin'
+  phppgadmin: 'PostgreSQL Admin'
+  postfix: 'Email Admin'
+  schlundtech: 'Schlundtech Domains'
+  strato: 'Strato Hosting'
+label:
+  login: 'Log in'
+text:
+  homepage: 'mindpool offers webhosting to its members. Log in to administrate!'
+  imprint: 'imprint'
+subheader:
+  imprint: 'mindpool GbR'

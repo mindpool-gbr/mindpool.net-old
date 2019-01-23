@@ -1,0 +1,71 @@
+{% trans_default_domain 'Layout' %}
+
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid" id="nav">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand navbar-brand-image" href="{{ path('homepage') }}"><img alt="Brand" height="32" width="32" src="{{ asset('images/logo128x128.png') }}"></a>
+      <a class="navbar-brand vcenter" href="{{ path('homepage') }}">mindpool</a>
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <!-- Menu for authenticated users -->
+        {% if is_granted('ROLE_USER') %}
+          <li{% if app.request.attributes.get('_route') == 'email_list' %} class="active"{% endif %}>
+          <a href="{{ path('email_list') }}">{{ 'menu.email'|trans }}</a></li>
+          <li{% if app.request.attributes.get('_route') == 'domain_list' %} class="active"{% endif %}>
+          <a href="{{ path('domain_list') }}">{{ 'menu.domain'|trans }}</a></li>
+        {% endif %}
+        <!-- Menu for admin -->
+        {% if is_granted('ROLE_USER_ADMIN') %}
+          <li{% if app.request.attributes.get('_route') == 'mindpoolUser_list' %} class="active"{% endif %}>
+          <a href="{{ path('mindpoolUser_list') }}">{{ 'label.user'|trans({}, 'MindpoolUser') }}</a></li>
+        {% endif %}
+        {% if is_granted('ROLE_ACCOUNTING_VIEW') %}
+          <li{% if app.request.attributes.get('_route') == 'mindpoolAccounting_dashboard' %} class="active"{% endif %}>
+          <a href="{{ path('mindpoolAccounting_dashboard') }}">{{ 'label.accounting'|trans({}, 'MindpoolAccounting') }}</a></li>
+        {% endif %}
+        <!-- Menu for anybody -->
+          <li><a href="https://confluence.mindpool.net" target="_blank">Confluence</a></li>
+          <li><a href="https://jira.mindpool.net" target="_blank">JIRA</a></li>
+      </ul>
+      <!-- alligned to the right -->
+      <ul class="nav navbar-nav navbar-right">
+        <!-- Login / User part -->
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ app.user.firstName }} {{ app.user.lastName }} <i class="fa fa-caret-down" aria-hidden="true"></i></a>
+            <ul class="dropdown-menu">
+              <li><a href="{#{ path('fos_user_profile_edit') }#}">{{ 'menu.profile'|trans }}</a></li>
+              <li><a href="{#{ path('fos_user_change_password') }#}">{{ 'menu.password'|trans }}</a></li>
+              {% if is_granted('ROLE_PREVIOUS_ADMIN') %}
+                <li role="separator" class="divider"></li>
+                <li><a href="{{ path('dashboard', {'_switch_user': '_exit'}) }}">{{ 'menu.unassume'|trans }}</a></li>
+              {% endif %}
+              <li role="separator" class="divider"></li>
+              <li><a href="{#{ path('fos_user_security_logout') }#}">{{ 'menu.logout'|trans }}</a></li>
+            </ul>
+        </li>
+        {% else %}
+        <li><a href="{#{ path('fos_user_security_login') }#}">{{ 'menu.login'|trans }}</a></li>
+        {% endif %}
+        <!-- Language -->
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-language" aria-hidden="true"></i></i></a>
+              <ul class="dropdown-menu">
+                <li><a href="{{ path('homepage', {'_locale': 'en'}) }}">
+                  {{ 'language.english'|trans }} {% if app.request.attributes.get('_locale') == 'en' %} <i class="fa fa-caret-left" aria-hidden="true"></i>{% endif %}</a></li>
+                <li><a href="{{ path('homepage', {'_locale': 'de'}) }}">
+                  {{ 'language.german'|trans }}{% if app.request.attributes.get('_locale') == 'de' %} <i class="fa fa-caret-left" aria-hidden="true"></i>{% endif %}</a></li>
+              </ul>
+          </li>
+      </ul>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,30 @@
+{% extends 'layout.html.twig' %}
+{% trans_default_domain 'AppBundle' %}
+
+{% block menuBlock %}{% endblock menuBlock %}
+{% block filterBlock %}{% endblock filterBlock %}
+{% block pageTitle %}{{ 'header.imprint'|trans }} <small>{{ 'subheader.imprint'|trans }}</small>{% endblock pageTitle %}
+{% block pageMenu %}{% endblock pageMenu %}
+
+{% block content %}
+  <div id="layout" class="container">
+
+    <address>
+      <strong>mindpool - Nickschas und Wiegmann GbR</strong><br>
+      Hauptstr. 1<br>
+      12345 Ulm<br>
+      Deutschland
+    </address>
+
+    <address>
+      <strong>Manuel Nickschas</strong><br>
+      manuel.nickschas[at]mindpool.net
+    </address>
+
+    <address>
+      <strong>Stefan Wiegmann</strong><br>
+      stefan.wiegmann[at]mindpool.net
+    </address>
+
+  </div>
+{% endblock content %}

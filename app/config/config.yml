@@ -7,10 +7,37 @@ imports:
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: en
+    max_rows: 10
+    languages:
+      'Deutsch': 'de'
+      'English': 'en'
+    user_roles:
+        - ROLE_ADMIN
+        - ROLE_PARTNER
+        - ROLE_GUEST
+    expenses_account: 'ausgaben'
+    receivable_account: 'forderungen'
+    credit_card_account: null
+    receivable_id: 8
+    payable_id: 10
+    # for VichUploaderBundle
+    non_public_upload_dir: "%kernel.root_dir%/../data/upload"
+    account_import_dir: "%non_public_upload_dir%/import"
+    chart_colors:
+        - '#d9534f'
+        - '#5bc0de'
+        - '#5cb85c'
+        - '#428bca'
+        - '#f9f9f9'
+        - '#ffb3ba'
+        - '#ffdfba'
+        - '#ffffba'
+        - '#baffc9'
+        - '#bae1ff'
 
 framework:
     #esi: ~
-    #translator: { fallbacks: ['%locale%'] }
+    translator: { fallbacks: ['%locale%'] }
     secret: '%secret%'
     router:
         resource: '%kernel.project_dir%/app/config/routing.yml'

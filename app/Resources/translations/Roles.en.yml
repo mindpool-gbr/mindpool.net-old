@@ -1,0 +1,5 @@
+role:
+  admin: 'Admin'
+  guest: 'Guest'
+  partner: 'Partner'
+  user: 'User'

@@ -1,0 +1,71 @@
+{% extends 'base.html.twig' %}
+{% trans_default_domain 'Layout' %}
+
+{% block layout %}
+
+  {% block nav %}
+    {% embed "nav.html.twig" %}{% endembed %}
+  {% endblock nav %}
+
+<div class="container-fluid">
+{% block main %}
+
+  <div id="layout">
+
+    {% block flash %}
+      {% embed "flash.html.twig" %}{% endembed %}
+    {% endblock flash %}
+
+    <div class="row container-fluid">
+      <div class="col-md-2">
+        {% block menuBlock %}
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title">{% block menuTitle %}Sidebar{% endblock menuTitle %}</h3>
+            </div>
+            <div class="panel-body">
+              <ul class="nav nav-pills nav-stacked">
+                {% block menuContent %}Content{% endblock menuContent %}
+              </ul>
+            </div>
+          </div>
+        {% endblock menuBlock %}
+          {% block filterBlock %}
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h3 class="panel-title">{% block filterTitle %}Filter{% endblock filterTitle %}</h3>
+              </div>
+              <div class="panel-body">
+                {% block filterContent %}Content{% endblock filterContent %}
+              </div>
+            </div>
+          {% endblock filterBlock %}
+      </div>
+
+      <div class="col-md-10">
+        {% block pageHeader %}
+          <div class="row">
+            <div class="col-md-8">
+              <h1 style="margin-top: 5px" class="page-header">
+                  {% block pageTitle %}title{% endblock pageTitle %}
+              </h1>
+            </div>
+              <div class="col-md-4 text-right">
+                    {% block pageMenu %}menu{% endblock pageMenu %}
+              </div>
+          </div>
+        {% endblock pageHeader %}
+        <div class="row">
+          {% block content %}content{% endblock content %}
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock main %}
+</div>
+    {% block footer %}
+      {% embed "footer.html.twig" %}{% endembed %}
+    {% endblock footer %}
+
+{% endblock layout %}

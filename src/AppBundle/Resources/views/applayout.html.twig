@@ -1,0 +1,23 @@
+{% extends '::layout.html.twig' %}
+{% trans_default_domain 'AppBundle' %}
+
+{% block menuTitle %}{{ 'header.menu'|trans }}{% endblock menuTitle %}
+
+{% block menuContent %}
+  <ul class="nav nav-pills nav-stacked">
+    <li role="presentation"><a href="http://sirius.mindpool.net/phppgadmin/" target="_blank">
+    {{ 'header.phppgadmin'|trans }}</a></li>
+    <li role="presentation"><a href="http://sirius.mindpool.net/phpmyadmin/" target="_blank">
+    {{ 'header.phpmyadmin'|trans }}</a></li>
+    <li role="presentation"><a href="http://sirius.mindpool.net/mailadmin/login.php" target="_blank">
+    {{ 'header.postfix'|trans }}</a></li>
+    <li role="presentation"><a href="https://www.strato.de/" target="_blank">
+    {{ 'header.strato'|trans }}</a></li>
+    <li role="presentation"><a href="https://www.hetzner.de/" target="_blank">
+    {{ 'header.hetzner'|trans }}</a></li>
+    <li role="presentation"><a href="https://www.1und1.de" target="_blank">
+    {{ 'header.1und1'|trans }}</a></li>
+    <li role="presentation"><a href="https://login.schlundtech.com/" target="_blank">
+    {{ 'header.schlundtech'|trans }}</a></li>
+  </ul>
+{% endblock menuContent %}

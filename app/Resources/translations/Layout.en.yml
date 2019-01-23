@@ -1,0 +1,23 @@
+menu:
+    email: 'Email'
+    domain: 'Domains'
+    user: 'User'
+    login: 'Login'
+    logout: 'Logout'
+    profile: 'Edit Profile'
+    password: 'Change Password'
+    imprint: 'About / Imprint'
+    unassume: 'Switch Back'
+    language: 'Change language'
+flash:
+  header:
+    success: 'Success!'
+    danger: 'Danger!'
+    info: 'Info!'
+    warning: 'Warning!'
+language:
+  english: 'English'
+  german: 'Deutsch'
+login:
+  header: 'Log in'
+  forgot: 'Forgot password?'

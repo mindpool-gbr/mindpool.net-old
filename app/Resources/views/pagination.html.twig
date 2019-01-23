@@ -1,0 +1,71 @@
+{# Pagination to be included anywhere. Needs {page, pageCount, path_name} #}
+<nav>
+<ul class="pagination">
+  {# Previous #}
+  {% if page == 1 %}
+    <li class="disabled">
+      <a href="#" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+  {% else %}
+    <li>
+      <a href="{{ path(path_name, {'page': page - 1}) }}{{filterString}}" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+  {% endif %}
+    {# Pages #}
+  {% if pageCount < 12 %}{# less than 12 Pages #}
+    {% for i in 1..pageCount %}
+        <li {% if page == i %}class="active"{% endif %}><a href="{{ path(path_name, {'page': i}) }}{{filterString}}">{{i}}</a></li>
+    {% endfor %}
+    {% else %}
+      {% if page < 8 %}{# any current page before 7 #}
+      {# Pages #}
+      {% for i in 1..8 %}
+          <li {% if page == i %}class="active"{% endif %}><a href="{{ path(path_name, {'page': i}) }}{{filterString}}">{{i}}</a></li>
+      {% endfor %}
+      <li class="disabled"><a href="#">...</a></li>
+      <li><a href="{{ path(path_name, {'page': pageCount - 1}) }}{{filterString}}">{{pageCount - 1}}</a></li>
+      <li><a href="{{ path(path_name, {'page': pageCount}) }}{{filterString}}">{{pageCount}}</a></li>
+      {% else %}
+        {% if page > pageCount - 7 %}{# any current page in the last 7 #}
+          {# Pages #}
+          <li><a href="{{ path(path_name, {'page': 1}) }}{{filterString}}">1</a></li>
+          <li><a href="{{ path(path_name, {'page': 2}) }}{{filterString}}">2</a></li>
+          <li class="disabled"><a href="#">...</a></li>
+          {% for i in 7..0 %}
+              <li {% if page == pageCount - i %}class="active"{% endif %}><a href="{{ path(path_name, {'page': pageCount - i}) }}{{filterString}}">{{pageCount - i}}</a></li>
+          {% endfor %}
+          {% else %}{# any other Page #}
+            <li><a href="{{ path(path_name, {'page': 1}) }}{{filterString}}">1</a></li>
+            <li><a href="{{ path(path_name, {'page': 2}) }}{{filterString}}">2</a></li>
+            <li class="disabled"><a href="#">...</a></li>
+            <li><a href="{{ path(path_name, {'page': page - 2}) }}{{filterString}}">{{page - 2}}</a></li>
+            <li><a href="{{ path(path_name, {'page': page - 1}) }}{{filterString}}">{{page - 1}}</a></li>
+            <li class="active"><a href="{{ path(path_name, {'page': page}) }}{{filterString}}">{{page}}</a></li>
+            <li><a href="{{ path(path_name, {'page': page + 1}) }}{{filterString}}">{{page + 1}}</a></li>
+            <li><a href="{{ path(path_name, {'page': page + 2}) }}{{filterString}}">{{page + 2}}</a></li>
+            <li class="disabled"><a href="#">...</a></li>
+            <li><a href="{{ path(path_name, {'page': pageCount - 1}) }}{{filterString}}">{{pageCount - 1}}</a></li>
+            <li><a href="{{ path(path_name, {'page': pageCount}) }}{{filterString}}">{{pageCount}}</a></li>
+          {% endif %}{# any current page in the last 7 #}
+        {% endif %}{# any current page before 8 #}
+      {% endif %}{# less than 12 Pages #}
+  {# Next #}
+  {% if page == pageCount %}
+    <li class="disabled">
+      <a href="#" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  {% else %}
+    <li>
+      <a href="{{ path(path_name, {'page': page + 1}) }}{{filterString}}" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  {% endif %}
+</ul>
+</nav>

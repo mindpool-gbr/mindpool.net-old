@@ -1,0 +1,23 @@
+menu:
+    email: 'Email'
+    domain: 'Domains'
+    user: 'User'
+    login: 'Einloggen'
+    logout: 'Ausloggen'
+    profile: 'Profil ändern'
+    password: 'Passwort ändern'
+    imprint: 'Impressum'
+    unassume: 'Zurück'
+    language: 'Sprache ändern'
+flash:
+  header:
+    success: 'Erfolg!'
+    danger: 'Achtung!'
+    info: 'Info!'
+    warning: 'Warnung!'
+language:
+  english: 'English'
+  german: 'Deutsch'
+login:
+  header: 'Einloggen'
+  forgot: 'Passwort vergessen?'

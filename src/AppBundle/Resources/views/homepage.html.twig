@@ -1,0 +1,12 @@
+{% extends 'layout.html.twig' %}
+{% trans_default_domain 'AppBundle' %}
+
+{% block main %}
+  <div id="layout" class="container">
+  <div class="jumbotron">
+    <h1>{{ 'header.homepage'|trans }}</h1>
+    <p>{{ 'text.homepage'|trans }}</p>
+    <p><a class="btn btn-primary btn-lg" href="{#{ path('fos_user_security_login') }#}" role="button">{{ 'label.login'|trans }}</a></p>
+  </div>
+</div>
+{% endblock main %}
